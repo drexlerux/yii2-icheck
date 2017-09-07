@@ -71,7 +71,7 @@ use drexlerux\ui\ICheck;
     <?= $form->field($model, 'radio2')->widget(ICheck::className(), [
         'type'  => ICheck::TYPE_RADIO_LIST,
         'style'  => ICheck::STYLE_MIMIMAL,
-        'items'    => [1 => 'Вася2', 2 => 'Катя2', 3 => 'Жора'],
+        'items'    => [1 => 'Item 1', 2 => 'Item 2', 3 => 'Item 3']
         'color'  => 'purple',                  // Color theme
         'options' => [
             'item' => function ($index, $label, $name, $checked, $value){
