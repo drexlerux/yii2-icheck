@@ -55,21 +55,22 @@ class ICheck extends InputWidget
     public function run()
     {
         $this->registerScript();
-
+        $rhtml = "";
         switch ($this->type) {
             case 'checkbox':
-                echo Html::activeInput('checkbox', $this->model, $this->attribute, $this->options);
+                $rhtml = Html::activeInput('checkbox', $this->model, $this->attribute, $this->options);
                 break;
             case 'checkbox-list':
-                echo Html::activeCheckboxList($this->model, $this->attribute, $this->items, $this->options);
+                $rhtml = Html::activeCheckboxList($this->model, $this->attribute, $this->items, $this->options);
                 break;
             case 'radio':
-                echo Html::activeInput('radio', $this->model, $this->attribute, $this->options);
+                $rhtml = Html::activeInput('radio', $this->model, $this->attribute, $this->options);
                 break;
             case 'radio-list':
-                echo Html::activeRadioList($this->model, $this->attribute, $this->items, $this->options);
+                $rhtml = Html::activeRadioList($this->model, $this->attribute, $this->items, $this->options);
                 break;
         }
+        echo '<div class="icheck-container">'.$rhtml.'</div>';
     }
 
     public function registerScript()
@@ -87,7 +88,7 @@ class ICheck extends InputWidget
             $(document).ready(function(){
              if ('$this->style' == 'line') {
                  if ('$this->color' == 'line') {
-                 $('input[type="checkbox"]').each(function(){
+                 $('.icheck-container input[type="checkbox"]').each(function(){
                     var self = $(this),
                       label = self.next(),
                       label_text = label.text();
@@ -100,7 +101,7 @@ class ICheck extends InputWidget
                     });
                   });
                  } else {
-                     $('#$this->idItem > input').each(function(){
+                     $('.icheck-container input[type="checkbox"]').each(function(){
                         var self = $(this),
                           label = self.next(),
                           label_text = label.text();
